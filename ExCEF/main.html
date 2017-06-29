@@ -1,0 +1,67 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            
+        });
+        
+        function setHostWindowSize() {
+            try {
+            
+                var param = {
+                    message: 'UM_RESIZE_CHROME',
+                    height : $('#iu').height()+100,
+                    width : $('#iu').width()
+                };
+                
+                window.PostMessage(JSON.stringify(param));
+            } catch (e) {}
+        }
+        
+        $(window).ready(function() {
+            /// javascript 의 DOM 트리 로딩이 완료되었을때를 발생한다.
+        });
+
+        $(window).load( function() {
+            /// 페이지의 모든 엘리먼트들이 모두 브라우저로 다운되고
+            /// 스크립트가 모든 엘리먼트에 접근가능하게 될 때 발생한다.
+            setHostWindowSize();
+        });
+        
+
+        
+    </script>
+</head>
+<body>
+<script language="JavaScript">
+
+var someData = {
+    DataNo : 1234,
+    DataName : 'Hello'
+};
+
+try {
+    /// window 객체의 myfunc 함수를 호출함.
+    someData.DataNo = 1;
+    alert(window.myfunc(JSON.stringify(someData)));
+
+    someData.DataNo = 2;
+    alert(window.myfunc(JSON.stringify(someData)));
+
+    someData.DataNo = 3;
+    alert(window.myfunc(JSON.stringify(someData)));
+} catch (e) {
+    console.log('myfunc is not defined.');
+}
+
+
+</script>
+
+<div id="photo_container">
+    <img id="iu" src="IU.png" />
+</div>
+
+
+</body>
